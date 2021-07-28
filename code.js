@@ -27,7 +27,6 @@ $("#nav_page2_id").click(function() {
 })
 
 
-/*
 $("#nav_page2_id").click(function() {
     dataChart.selectAll("g").remove();
     hide('#page1_id');
@@ -51,8 +50,8 @@ $("#nav_page4_id").click(function() {
     draw("WLD", false, 1);
     draw("WLD", false, 2);
 })
-*/
-////////////////////////////////////////////////////////////////  Functions  ////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////  Functions  ////////////////////////////////////////////////////////////////
 
 // Get country data from API
 function getAllCountries(callback){
