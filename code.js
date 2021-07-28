@@ -1,3 +1,4 @@
+/////////////////////////////////////////////////////////////  Chart Related  /////////////////////////////////////////////////////////////
 const width = 700;
 const height = 700;
 
@@ -6,7 +7,20 @@ var yScale = d3.scaleLinear().range([height, 0]);
 var xAxis = d3.axisBottom().scale(xScale);
 var yAxis = d3.axisLeft().scale(yScale);
 
-// Functions
+const chart = d3.select('#chart')
+    .attr("width", 800)
+    .attr("height", 800)
+
+const dataChart = chart.append("g").attr("transform", "translate(" + 50 + "," + 50 + ")");
+
+var g = dataChart
+    .attr("width", 800)
+    .attr("height", 800)
+    .append("g")
+    .attr("transform", "translate(" + 50 + "," + 50 + ")");
+
+
+////////////////////////////////////////////////////////////////  Functions  ////////////////////////////////////////////////////////////////
 
 // Get country data from API
 function getAllCountries(callback){
