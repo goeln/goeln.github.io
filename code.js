@@ -58,14 +58,6 @@ function draw(countryCode, countrylabel, type) {
 function drawChart(countryCode, countrylabel, color) {
     return function(data){
 
-        if (data == null || data[1] == null){
-            $('.alert').show();
-            return;
-        }
-
-        //  clean up everything before drawing a new chart
-        // d3.select("body").selectAll("svg > *").remove();
-
         xScale.domain(d3.extent(data[1], function(d) { return d.date; }));
         yScale.domain([0, 100]);
 
