@@ -20,7 +20,14 @@ var g = dataChart
     .attr("transform", "translate(" + 50 + "," + 50 + ")");
 
 ////////////////////////////////////////////////////////////////  Slides  ////////////////////////////////////////////////////////////////
+$("#nav_page2_id").click(function() {
+    dataChart.selectAll("g").remove();
+    hide('#page1_id');
+    show('#page2_id');    
+})
 
+
+/*
 $("#nav_page2_id").click(function() {
     dataChart.selectAll("g").remove();
     hide('#page1_id');
@@ -44,7 +51,7 @@ $("#nav_page4_id").click(function() {
     draw("WLD", false, 1);
     draw("WLD", false, 2);
 })
-
+*/
 ////////////////////////////////////////////////////////////////  Functions  ////////////////////////////////////////////////////////////////
 
 // Get country data from API
