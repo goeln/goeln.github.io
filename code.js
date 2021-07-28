@@ -19,6 +19,31 @@ var g = dataChart
     .append("g")
     .attr("transform", "translate(" + 50 + "," + 50 + ")");
 
+////////////////////////////////////////////////////////////////  Slides  ////////////////////////////////////////////////////////////////
+
+$("#nav_page2_id").click(function() {
+    dataChart.selectAll("g").remove();
+    hide('#page1_id');
+    show('#page2_id');    
+    draw("USA", false, 1);
+    draw("USA", false, 2);
+})
+
+$("#nav_page3_id").click(function() {
+    dataChart.selectAll("g").remove();
+    hide('#page2_id');
+    show('#page3_id');    
+    draw("IND", false, 1);
+    draw("IND", false, 2);
+})
+
+$("#nav_page4_id").click(function() {
+    dataChart.selectAll("g").remove();
+    hide('#page3_id');
+    show('#page4_id');    
+    draw("WLD", false, 1);
+    draw("WLD", false, 2);
+})
 
 ////////////////////////////////////////////////////////////////  Functions  ////////////////////////////////////////////////////////////////
 
