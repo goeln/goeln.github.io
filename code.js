@@ -157,3 +157,12 @@ function drawChart(countryCode, countrylabel, color) {
         }
     }
 }
+
+// helper functions
+function show(page){
+    $(page).show();
+}
+
+function hide(page){
+    $(page).hide();
+}
