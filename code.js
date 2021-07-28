@@ -177,4 +177,4 @@ function show(page){
 
 function hide(page){
     $(page).hide();
-}
+} 
