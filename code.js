@@ -120,7 +120,7 @@ function drawChart(countryCode, countrylabel, color) {
             return "<strong style='color:" + color + "'>" + countryCode + " " + floatFormatValue(d.value)  + "</strong>"; 
         });   
 
-        var path = innerChart.append("g").append("path")
+        var path = dataChart.append("g").append("path")
         .attr("width", width).attr("height", height)
         .datum(data[1].map( (d, i) => {
             return {
@@ -134,7 +134,7 @@ function drawChart(countryCode, countrylabel, color) {
         .style("stroke", color);        
 
         // datapoint tooltip
-        innerChart.append("g").selectAll(".dot")
+        dataChart.append("g").selectAll(".dot")
             .attr("width", width).attr("height",height)
             .data(data[1])
             .enter()
@@ -148,7 +148,7 @@ function drawChart(countryCode, countrylabel, color) {
             .on('mouseout', tip.hide);
 
         if (countrylabel == true){
-            innerChart.selectAll().data(data[1]).enter().append("g").append("text")
+            dataChart.selectAll().data(data[1]).enter().append("g").append("text")
             .attr("transform", "translate(" + (width - 20) + "," + yScale(data[1][data[1].length - 1].value) + ")")
             .attr("dy", ".15em")
             .attr("text-anchor", "start")
