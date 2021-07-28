@@ -80,6 +80,11 @@ function draw(countryCode, countrylabel, type) {
     }
 }
 
+var valueline = d3.line()
+    .x(function(d){ return xScale(d.date);})
+    .y(function(d){ return yScale(d.value);})
+    .curve(d3.curveLinear);
+
 function drawChart(countryCode, countrylabel, color) {
     return function(data){
 
