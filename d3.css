@@ -1,11 +1,15 @@
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
 .focus text {
     font-size: 16px;
 }
 
-
-.overlay {
+.focus circle {
     fill: none;
-    pointer-events: all;
+    fill: steelblue;
 }
 
 .tooltip {
