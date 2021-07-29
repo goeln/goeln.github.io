@@ -58,7 +58,7 @@ $("#nav_page3_id").click(function() {
     draw("IND", true, 2);
 })
 
-$("#startover").click(function() {
+$("#beginning").click(function() {
     innerChart.selectAll("g").remove();
     hide("#page3_id");
     hide("#country");
