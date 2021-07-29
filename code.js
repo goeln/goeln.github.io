@@ -54,8 +54,8 @@ $("#nav_page3_id").click(function() {
     hide('#page2_id');
     loadCountries(addCountriesList);
     show('#page3_id');
-    draw("CAR", true, 1);
-    draw("CAR", true, 2);
+    draw("IND", true, 1);
+    draw("IND", true, 2);
 })
 
 $("#startover").click(function() {
@@ -78,16 +78,12 @@ function load(){
     });
 }
 
-// get all countries ( total 304 countries so far so setting it to 400 items per page to get all the countries information. #TODO fix it so get page meta first to get "total" and send 2nd query to dynamically change the per_pages number to have "total" values)
-// provide a callback function to execute with loaded data.
 function loadCountries(callback){
     if (typeof callback !== "function") throw new Error("Wrong callback in loadCountries");
 
     d3.json("https://api.worldbank.org/v2/country?format=json&per_page=400").then(callback);
 }
 
-// get a given country's data
-// provide a callback function to execute with loaded data. World total.
 function loadFemaleEmploymentByCountryCode(countryCode, callback){
     d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.FE.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
