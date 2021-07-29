@@ -27,12 +27,12 @@ h1 {
 
 .line {
     fill: none;
-    stroke: steelblue;
+    stroke: black;
     stroke-width: 2px;
 }
 
 path { 
-    stroke: steelblue;
+    stroke: black;
     stroke-width: 2;
     fill: none;
 }
@@ -42,7 +42,7 @@ path {
     stroke: #fff;
 }
 
-.ticks path {stroke:darkgray;opacity:0.3} 
+.ticks path {stroke:black;opacity:0.3} 
 
 .content {
     max-width: 800px;
