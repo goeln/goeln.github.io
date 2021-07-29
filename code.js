@@ -161,15 +161,7 @@ function drawChart(countryCode, countrylabel, color){
 
     console.log("Color parameter received in drawChart", color);
 
-    // done this way to take extra parameter and pass it to the callback.
     return function(data){
-
-        //console.log("data[0] in draw():", data[0]);
-        console.log("data[1] in draw():", data[1]);
-        if (data == null || data[1] == null){
-            $('.alert').show();
-            return;
-        }
 
         //  clean up everything before drawing a new chart
         // d3.select("body").selectAll("svg > *").remove();
