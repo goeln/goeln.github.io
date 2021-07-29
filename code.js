@@ -1,4 +1,4 @@
-const margin = {top: 0, right: 120, bottom: 50, left: 50},
+const margin = {top: 20, right: 120, bottom: 50, left: 50},
     svgWidth = 900,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
