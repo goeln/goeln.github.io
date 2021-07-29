@@ -14,8 +14,7 @@ const chart = d3.select('#chart')
     .attr("width", svgWidth)
     .attr("height", svgHeight)
 
-const innerChart = chart.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const innerChart = chart.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // x,y values
 var xScale = d3.scaleLinear().range([0,width]);
@@ -34,67 +33,35 @@ var valueline = d3.line()
 
 // Adds the svg canvas
 var g = innerChart
-    // .call(zoom)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);    
 
-$('.close').click(function() {
-    $('.alert').hide();
-})
-
-$('.alert').hide();
-
-$("#to_step2").click(function() {
-    //d3.selectAll("path").remove();
+$("#nav_page2_id").click(function() {
     innerChart.selectAll("g").remove();
-    hide('#step1');
-    show('#step2');    
+    hide('#page1_id');
+    show('#page2_id');    
     draw("USA", false, 0);
     draw("USA", false, 1);
     draw("USA", false, 2);
 })
 
-$("#to_step3").click(function() {
+$("#nav_page3_id").click(function() {
     //d3.selectAll("path").remove();
     innerChart.selectAll("g").remove();
-    hide('#step2');
-    show('#step3');
-    draw("CHN", false, 0);
-    draw("CHN", false, 1);
-    draw("CHN", false, 2);
-})
-
-$("#to_step4").click(function() {
-    //d3.selectAll("path").remove();
-    innerChart.selectAll("g").remove();
-    hide('#step3');
-    show('#step4');
-    draw("RUS", false, 0);
-    draw("RUS", false, 1);
-    draw("RUS", false, 2);
-})
-
-$("#to_step5").click(function() {
-    //d3.selectAll("path").remove();
-    innerChart.selectAll("g").remove();
-    hide('#step4');
-    loadCountries(addCountriesList);
-    show('#step5');
-    draw("WLD", true, 0);
-    draw("USA", true, 0);
-    draw("CHN", true, 0);
-    draw("RUS", true, 0);
-    
+    hide('#page2_id');
+    show('#page3_id');
+    draw("IND", false, 0);
+    draw("IND", false, 1);
+    draw("IND", false, 2);
 })
 
 $("#startover").click(function() {
     innerChart.selectAll("g").remove();
-    hide("#step5");
+    hide("#page3_id");
     hide("#country");
-    //d3.selectAll("path").remove();
-    show("#step1");
+    show("#page1_id");
     draw("WLD", false, 0);
     draw("WLD", false, 1);
     draw("WLD", false, 2);
