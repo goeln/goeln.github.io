@@ -5,7 +5,6 @@ const margin = {top: 20, right: 120, bottom: 50, left: 50},
     height = svgHeight - margin.top - margin.bottom;
 
 const type = {
-    TOTAL: 0,
     MAILE: 1,
     FEMAILE: 2
 }
@@ -88,10 +87,6 @@ function loadCountries(callback){
 
 // get a given country's data
 // provide a callback function to execute with loaded data. World total.
-function loadTotalEmploymentByCountryCode(countryCode, callback){
-    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=2000:2019")
-        .then(callback);
-}
 function loadFemaleEmploymentByCountryCode(countryCode, callback){
     d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.FE.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
@@ -111,14 +106,8 @@ function loadEmploymentByCountryCode(countryCode, type, callback){
     if (type == "male"){
         loadMaleEmploymentByCountryCode(countryCode, callback);
     }
-    else if (type == "female"){
-        loadFemaleEmploymentByCountryCode(countryCode, callback);
-    }
-    else if (type == "total"){
-        loadTotalEmploymentByCountryCode(countryCode, callback);
-    }
     else {
-        console.error("no proper type", type);
+        loadFemaleEmploymentByCountryCode(countryCode, callback);
     }
 }
 
@@ -136,17 +125,11 @@ function debug(d){
 function draw(countryCode, countrylabel, type) {
     console.log("country in draw():", countryCode);
 
-    if (type == 0){
-        loadEmploymentByCountryCode(countryCode, "total", drawChart(countryCode, countrylabel, "orange"));
-    }
-    else if (type == 1){
+    if (type == 1){
         loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "blue"));
     }
-    else if (type == 2){
-        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "red"));
-    }
     else {
-        console.log("error in draw(), type:", type);
+        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "red"));
     }
 }
 
