@@ -237,7 +237,7 @@ function drawChart(countryCode, countrylabel, color){
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
-            .attr("x", -500)
+            .attr("x", 0 - (465 / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("percentage");
