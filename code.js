@@ -1,6 +1,6 @@
-const margin = {top: 20, right: 120, bottom: 50, left: 50},
-    svgWidth = 900,
-    svgHeight = 600,
+const margin = {top: 10, right: 120, bottom: 30, left: 30},
+    svgWidth = 800,
+    svgHeight = 500,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
 
@@ -10,8 +10,6 @@ const type = {
     MAILE: 1,
     FEMAILE: 2
 }
-
-const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
 
 const chart = d3.select('#chart')
     .attr("width", svgWidth)
