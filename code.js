@@ -51,6 +51,7 @@ $("#nav_page3_id").click(function() {
     //d3.selectAll("path").remove();
     innerChart.selectAll("g").remove();
     hide('#page2_id');
+    loadCountries(addCountriesList);
     show('#page3_id');
     draw("IND", false, 0);
     draw("IND", false, 1);
