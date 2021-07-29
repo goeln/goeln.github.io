@@ -123,7 +123,7 @@ function draw(countryCode, countrylabel, type) {
     console.log("country in draw():", countryCode);
 
     if (type == 1){
-        loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "blue"));
+        loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "CornflowerBlue"));
     }
     else {
         loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "pink"));
