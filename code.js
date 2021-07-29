@@ -54,8 +54,8 @@ $("#nav_page3_id").click(function() {
     hide('#page2_id');
     loadCountries(addCountriesList);
     show('#page3_id');
-    draw("IND", true, 1);
-    draw("IND", true, 2);
+    draw("CAR", true, 1);
+    draw("CAR", true, 2);
 })
 
 $("#startover").click(function() {
