@@ -9,6 +9,8 @@ const type = {
     FEMAILE: 2
 }
 
+const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
+
 const chart = d3.select('#chart')
     .attr("width", svgWidth)
     .attr("height", svgHeight)
@@ -41,7 +43,6 @@ $("#nav_page2_id").click(function() {
     innerChart.selectAll("g").remove();
     hide('#page1_id');
     show('#page2_id');    
-    draw("USA", false, 0);
     draw("USA", false, 1);
     draw("USA", false, 2);
 })
@@ -51,9 +52,8 @@ $("#nav_page3_id").click(function() {
     hide('#page2_id');
     loadCountries(addCountriesList);
     show('#page3_id');
-    draw("IND", false, 0);
-    draw("IND", false, 1);
-    draw("IND", false, 2);
+    draw("IND", true, 1);
+    draw("IND", true, 2);
 })
 
 $("#startover").click(function() {
@@ -61,7 +61,6 @@ $("#startover").click(function() {
     hide("#page3_id");
     hide("#country");
     show("#page1_id");
-    draw("WLD", false, 0);
     draw("WLD", false, 1);
     draw("WLD", false, 2);
 })
