@@ -11,6 +11,10 @@ const type = {
     FEMAILE: 2
 }
 
+var parseTime = d3.timeParse("%Y");
+var formatValue = d3.format(",");
+var floatFormatValue = d3.format(".3n");
+
 const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
 
 const chart = d3.select('#chart')
