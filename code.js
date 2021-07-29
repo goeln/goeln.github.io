@@ -111,9 +111,8 @@ $("input[name='type']").click(function() {
     draw('WLD', $('input:radio[name=type]:checked').val());
 })
 
-
 function load(){
-    d3.json("https://api.worldbank.org/v2/country/all/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=" + yearStart + ":" + yearEnd).then(function(d){
+    d3.json("https://api.worldbank.org/v2/country/all/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=2000:2019").then(function(d){
         console.log(d);
     });
 }
