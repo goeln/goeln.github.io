@@ -4,9 +4,7 @@ const margin = {top: 20, right: 120, bottom: 50, left: 50},
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
 
-// WDI call type 
 const type = {
-    TOTAL: 0,
     MAILE: 1,
     FEMAILE: 2
 }
@@ -15,14 +13,11 @@ var parseTime = d3.timeParse("%Y");
 var formatValue = d3.format(",");
 var floatFormatValue = d3.format(".3n");
 
-const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
-
 const chart = d3.select('#chart')
     .attr("width", svgWidth)
     .attr("height", svgHeight)
 
-const innerChart = chart.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const innerChart = chart.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // x,y values
 var xScale = d3.scaleLinear().range([0,width]);
@@ -41,68 +36,33 @@ var valueline = d3.line()
 
 // Adds the svg canvas
 var g = innerChart
-    // .call(zoom)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);    
 
-$('.close').click(function() {
-    $('.alert').hide();
-})
-
-$('.alert').hide();
-
-$("#to_step2").click(function() {
-    //d3.selectAll("path").remove();
+$("#nav_page2_id").click(function() {
     innerChart.selectAll("g").remove();
-    hide('#step1');
-    show('#step2');    
-    draw("USA", false, 0);
+    hide('#page1_id');
+    show('#page2_id');    
     draw("USA", false, 1);
     draw("USA", false, 2);
 })
 
-$("#to_step3").click(function() {
-    //d3.selectAll("path").remove();
+$("#nav_page3_id").click(function() {
     innerChart.selectAll("g").remove();
-    hide('#step2');
-    show('#step3');
-    draw("CHN", false, 0);
-    draw("CHN", false, 1);
-    draw("CHN", false, 2);
-})
-
-$("#to_step4").click(function() {
-    //d3.selectAll("path").remove();
-    innerChart.selectAll("g").remove();
-    hide('#step3');
-    show('#step4');
-    draw("RUS", false, 0);
-    draw("RUS", false, 1);
-    draw("RUS", false, 2);
-})
-
-$("#to_step5").click(function() {
-    //d3.selectAll("path").remove();
-    innerChart.selectAll("g").remove();
-    hide('#step4');
+    hide('#page2_id');
     loadCountries(addCountriesList);
-    show('#step5');
-    draw("WLD", true, 0);
-    draw("USA", true, 0);
-    draw("CHN", true, 0);
-    draw("RUS", true, 0);
-    
+    show('#page3_id');
+    draw("IND", true, 1);
+    draw("IND", true, 2);
 })
 
 $("#startover").click(function() {
     innerChart.selectAll("g").remove();
-    hide("#step5");
+    hide("#page3_id");
     hide("#country");
-    //d3.selectAll("path").remove();
-    show("#step1");
-    draw("WLD", false, 0);
+    show("#page1_id");
     draw("WLD", false, 1);
     draw("WLD", false, 2);
 })
@@ -110,6 +70,7 @@ $("#startover").click(function() {
 $("input[name='type']").click(function() {
     draw('WLD', $('input:radio[name=type]:checked').val());
 })
+
 
 function load(){
     d3.json("https://api.worldbank.org/v2/country/all/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=2000:2019").then(function(d){
@@ -127,10 +88,6 @@ function loadCountries(callback){
 
 // get a given country's data
 // provide a callback function to execute with loaded data. World total.
-function loadTotalEmploymentByCountryCode(countryCode, callback){
-    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=2000:2019")
-        .then(callback);
-}
 function loadFemaleEmploymentByCountryCode(countryCode, callback){
     d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.FE.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
@@ -150,14 +107,8 @@ function loadEmploymentByCountryCode(countryCode, type, callback){
     if (type == "male"){
         loadMaleEmploymentByCountryCode(countryCode, callback);
     }
-    else if (type == "female"){
-        loadFemaleEmploymentByCountryCode(countryCode, callback);
-    }
-    else if (type == "total"){
-        loadTotalEmploymentByCountryCode(countryCode, callback);
-    }
     else {
-        console.error("no proper type", type);
+        loadFemaleEmploymentByCountryCode(countryCode, callback);
     }
 }
 
@@ -175,17 +126,11 @@ function debug(d){
 function draw(countryCode, countrylabel, type) {
     console.log("country in draw():", countryCode);
 
-    if (type == 0){
-        loadEmploymentByCountryCode(countryCode, "total", drawChart(countryCode, countrylabel, "orange"));
-    }
-    else if (type == 1){
+    if (type == 1){
         loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "blue"));
     }
-    else if (type == 2){
-        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "red"));
-    }
     else {
-        console.log("error in draw(), type:", type);
+        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "red"));
     }
 }
 
@@ -200,15 +145,7 @@ function drawChart(countryCode, countrylabel, color){
 
     console.log("Color parameter received in drawChart", color);
 
-    // done this way to take extra parameter and pass it to the callback.
     return function(data){
-
-        //console.log("data[0] in draw():", data[0]);
-        console.log("data[1] in draw():", data[1]);
-        if (data == null || data[1] == null){
-            $('.alert').show();
-            return;
-        }
 
         //  clean up everything before drawing a new chart
         // d3.select("body").selectAll("svg > *").remove();
