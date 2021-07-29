@@ -1,7 +1,3 @@
-const yearStart = 2000;
-const yearEnd = 2017;
-const totalNoOfCountriesToLoad = 400;
-
 const margin = {top: 20, right: 120, bottom: 50, left: 50},
     svgWidth = 900,
     svgHeight = 600,
@@ -127,21 +123,21 @@ function load(){
 function loadCountries(callback){
     if (typeof callback !== "function") throw new Error("Wrong callback in loadCountries");
 
-    d3.json("https://api.worldbank.org/v2/country?format=json&per_page=" + totalNoOfCountriesToLoad).then(callback);
+    d3.json("https://api.worldbank.org/v2/country?format=json&per_page=400").then(callback);
 }
 
 // get a given country's data
 // provide a callback function to execute with loaded data. World total.
 function loadTotalEmploymentByCountryCode(countryCode, callback){
-    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=" + yearStart + ":" + yearEnd)
+    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
 }
 function loadFemaleEmploymentByCountryCode(countryCode, callback){
-    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.FE.ZS?format=json&per_page=60&date=" + yearStart + ":" + yearEnd)
+    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.FE.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
 }
 function loadMaleEmploymentByCountryCode(countryCode, callback){
-    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.MA.ZS?format=json&per_page=60&date=" + yearStart + ":" + yearEnd)
+    d3.json("https://api.worldbank.org/v2/country/" + countryCode + "/indicator/SL.EMP.WORK.MA.ZS?format=json&per_page=60&date=2000:2019")
         .then(callback);
 }
 
