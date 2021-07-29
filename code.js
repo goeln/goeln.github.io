@@ -4,10 +4,6 @@ const margin = {top: 20, right: 120, bottom: 50, left: 50},
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
 
-var parseTime = d3.timeParse("%Y");
-var formatValue = d3.format(",");
-var floatFormatValue = d3.format(".3n");
-
 // WDI call type 
 const type = {
     TOTAL: 0,
