@@ -1,4 +1,4 @@
-const margin = {top: 5, right: 120, bottom: 10, left: 30},
+const margin = {top: 5, right: 120, bottom: 30, left: 30},
     svgWidth = 700,
     svgHeight = 400,
     width = svgWidth - margin.left - margin.right,
@@ -237,7 +237,7 @@ function drawChart(countryCode, countrylabel, color){
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
-            .attr("x", 0 - 200)
+            .attr("x", 0 - 500)
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("percentage");
