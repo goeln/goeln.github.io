@@ -3,6 +3,10 @@
     pointer-events: all;
 }
 
+h1 {
+    text-align:center;
+}
+
 .focus circle {
     fill: none;
     fill: steelblue;
