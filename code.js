@@ -130,17 +130,10 @@ function draw(countryCode, countrylabel, type) {
         loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "blue"));
     }
     else {
-        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "red"));
+        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "pink"));
     }
 }
 
-
-/**
- * callback function for d3.json()
- * @param {*} countryCode 3-digit country code to draw a linechart and also for label.
- * @param {*} countrylabel true of false for drawing line tooltip 
- * @param {*} color color string to to draw line chart. e.g, "red", "black", etc.
- */
 function drawChart(countryCode, countrylabel, color){
 
     console.log("Color parameter received in drawChart", color);
