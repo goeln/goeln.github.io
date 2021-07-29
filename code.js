@@ -1,10 +1,9 @@
-const margin = {top: 5, right: 120, bottom: 30, left: 30},
-    svgWidth = 700,
-    svgHeight = 500,
+const margin = {top: 20, right: 120, bottom: 50, left: 50},
+    svgWidth = 900,
+    svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
 
-// WDI call type 
 const type = {
     TOTAL: 0,
     MAILE: 1,
@@ -236,8 +235,8 @@ function drawChart(countryCode, countrylabel, color){
         innerChart
             .append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", -60)
-            .attr("x", -300)
+            .attr("y", 0 - margin.left)
+            .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("percentage");
