@@ -132,10 +132,10 @@ function draw(countryCode, countrylabel, type) {
 function drawAnnotation(countryCode, countrylabel, type) {
 
     if (type == 1){
-        loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "CornflowerBlue"));
+        loadEmploymentByCountryCode(countryCode, "male", drawChartAnnotationWorld(countryCode, countrylabel, "CornflowerBlue"));
     }
     else {
-        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "pink"));
+        loadEmploymentByCountryCode(countryCode, "female", drawChartAnnotationWorld(countryCode, countrylabel, "pink"));
     }
 }
 
@@ -158,18 +158,7 @@ function drawChart(countryCode, countrylabel, color){
                                 (height + margin.top + 20) + ")")
             .style("text-anchor", "middle")
             .text("year");
-        
-        innerChart
-            .append("text")
-            .attr("x", (width / 2))             
-            .attr("y", 0 - (margin.top / 2))
-            .attr("text-anchor", "middle")  
-            .style("font-size", "16px") 
-            .style("text-decoration", "underline")  
-            .text("Value vs Date Graph");
-
-        console.log("add y axis");
-        // Add the Y Axis
+     
         innerChart
             .append('g')
             .call(yAxis)
