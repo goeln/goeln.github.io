@@ -46,8 +46,8 @@ $("#nav_page2_id").click(function() {
     innerChart.selectAll("g").remove();
     hide('#page1_id');
     show('#page2_id');    
-    draw("USA", false, 1);
-    draw("USA", false, 2);
+    drawAnnotation2("USA", false, 1);
+    drawAnnotation2("USA", false, 2);
 })
 
 $("#nav_page3_id").click(function() {
@@ -316,7 +316,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
     }
 }
 
-function drawChartAnnotationWorld(countryCode, countrylabel, color){
+function drawChartAnnotationUSA(countryCode, countrylabel, color){
 
     return function(data){
 
