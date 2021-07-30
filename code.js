@@ -53,6 +53,7 @@ $("#nav_page2_id").click(function() {
 
 $("#nav_page3_id").click(function() {
     innerChart.selectAll("g").remove();
+    innerChart.selectAll("text").remove();
     hide('#page2_id');
     loadCountries(addCountriesList);
     show('#page3_id');
@@ -62,6 +63,7 @@ $("#nav_page3_id").click(function() {
 
 $("#beginning").click(function() {
     innerChart.selectAll("g").remove();
+    innerChart.selectAll("text").remove();
     hide("#page3_id");
     hide("#country");
     show("#page1_id");
