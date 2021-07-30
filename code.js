@@ -241,14 +241,14 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 38) + ")")
+                                ((height/2) - 28) + ")")
             .text("Note the 8% increase from 2000 to 2018");
         
         innerChart
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 18) + ")")
+                                ((height/2) - 8) + ")")
             .text("but only a ~1% difference between the genders");
 
         console.log("add y axis");
