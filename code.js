@@ -189,7 +189,6 @@ function drawChart(countryCode, countrylabel, color){
         var path = innerChart.append("g").append("path")
         .attr("width", width).attr("height",height)
         .datum(data[1].map( (d, i) => {
-            console.log("path : date", d.date, "value", d.value);
             return {
                 date : d.date,
                 value : d.value
@@ -258,9 +257,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 28) + ")")
             .text("but only a ~1% difference between the genders");
-
-        console.log("add y axis");
-        // Add the Y Axis
+        
         innerChart
             .append('g')
             .call(yAxis)
@@ -283,7 +280,6 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
         var path = innerChart.append("g").append("path")
         .attr("width", width).attr("height",height)
         .datum(data[1].map( (d, i) => {
-            console.log("path : date", d.date, "value", d.value);
             return {
                 date : d.date,
                 value : d.value
@@ -375,7 +371,6 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
         var path = innerChart.append("g").append("path")
         .attr("width", width).attr("height",height)
         .datum(data[1].map( (d, i) => {
-            console.log("path : date", d.date, "value", d.value);
             return {
                 date : d.date,
                 value : d.value
@@ -426,7 +421,6 @@ function addCountriesList(data, i){
         .text(function (d, i){return d.name;});
 
     d3.select("body").select("#country_select_container").select("select").on("change", function(){
-        console.log(d3.select(this).property('value'));
         draw(
             d3.select(this).property('value'), 
             true,
