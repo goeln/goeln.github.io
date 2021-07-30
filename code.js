@@ -233,7 +233,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .append("text")             
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                (height + margin.top) + ")")
+                                (height + margin.top + 20) + ")")
             .style("text-anchor", "middle")
             .text("year");
         
@@ -243,7 +243,6 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
                 "translate(" + (width/2) + " ," + 
                                 (height/2) + ")")
             .attr("text-anchor", "middle")  
-            .style("font-size", "16px") 
             .text("Note the 8% increase from 2000 to 2018 /n \n but only a ~1% difference between the genders.");
 
         console.log("add y axis");
