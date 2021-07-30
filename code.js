@@ -248,7 +248,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) + 50) + ")")
+                                ((height/2) + 58) + ")")
             .text("but only a ~1% difference between the genders");
 
         console.log("add y axis");
