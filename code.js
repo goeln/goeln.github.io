@@ -343,15 +343,15 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 28) + ")")
-            .text("SECOND TEXT");
+                                ((height/2) - 98) + ")")
+            .text("Note that the % difference from 2000 to 2018 is");
         
         innerChart
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 8) + ")")
-            .text("SECOND");
+                                ((height/2) - 78) + ")")
+            .text("only about 1-2% across both genders");
 
         innerChart
             .append('g')
