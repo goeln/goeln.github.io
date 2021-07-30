@@ -239,8 +239,9 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
         
         innerChart
             .append("text")
-            .attr("x", (width / 2))             
-            .attr("y", 0 - (margin.top / 2))
+            .attr("transform",
+                "translate(" + (width/2) + " ," + 
+                                (height + margin.top + 70) + ")")
             .attr("text-anchor", "middle")  
             .style("font-size", "16px") 
             .text("Note the 8% increase from 2000 to 2018 but only a difference of ~1% between the genders.");
