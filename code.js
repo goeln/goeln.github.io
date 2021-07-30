@@ -64,8 +64,8 @@ $("#beginning").click(function() {
     hide("#page3_id");
     hide("#country");
     show("#page1_id");
-    draw("WLD", false, 1);
-    draw("WLD", false, 2);
+    drawAnnotation("WLD", false, 1);
+    drawAnnotation("WLD", false, 2);
 })
 
 $("input[name='type']").click(function() {
@@ -109,11 +109,6 @@ function loadEmploymentByCountryCode(countryCode, type, callback){
     }
 }
 
-// Only for debugging purpose, provide this function as callback for those API calls to see the loaded data
-function debug(d){
-    console.log("DEBUG) data loaded:", d);
-}
-
 /**
  * callback function
  * @param {*} countryCode 3-digit country code to query, "WLD" is for the world.
@@ -136,6 +131,16 @@ function drawAnnotation(countryCode, countrylabel, type) {
     }
     else {
         loadEmploymentByCountryCode(countryCode, "female", drawChartAnnotationWorld(countryCode, countrylabel, "pink"));
+    }
+}
+
+function drawAnnotation2(countryCode, countrylabel, type) {
+
+    if (type == 1){
+        loadEmploymentByCountryCode(countryCode, "male", drawChartAnnotationUSA(countryCode, countrylabel, "CornflowerBlue"));
+    }
+    else {
+        loadEmploymentByCountryCode(countryCode, "female", drawChartAnnotationUSA(countryCode, countrylabel, "pink"));
     }
 }
 
@@ -250,6 +255,100 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 8) + ")")
             .text("but only a ~1% difference between the genders");
+
+        console.log("add y axis");
+        // Add the Y Axis
+        innerChart
+            .append('g')
+            .call(yAxis)
+            .attr("y", 6);
+
+        innerChart
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("percentage (%)");
+
+        /* Initialize tooltip for datapoint */
+        tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
+            return "<strong style='color:" + color + "'>" + countryCode + " " + floatFormatValue(d.value)  + "</strong>"; 
+        });   
+
+        var path = innerChart.append("g").append("path")
+        .attr("width", width).attr("height",height)
+        .datum(data[1].map( (d, i) => {
+            console.log("path : date", d.date, "value", d.value);
+            return {
+                date : d.date,
+                value : d.value
+            };
+        }
+        ))
+        .attr("class", "line")
+        .attr("d", valueline)
+        .style("stroke", color);        
+
+        // datapoint tooltip
+        innerChart.append("g").selectAll(".dot")
+            .attr("width", width).attr("height",height)
+            .data(data[1])
+            .enter()
+            .append("circle") // Uses the enter().append() method
+            .attr("class", "dot") // Assign a class for styling
+            .attr("cx", function(d) { return xScale(d.date) })
+            .attr("cy", function(d) { return yScale(d.value) })
+            .attr("r", 3)
+            .call(tip)
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+
+        if (countrylabel == true){
+            innerChart.selectAll().data(data[1]).enter().append("g").append("text")
+            .attr("transform", "translate(" + (width - 20) + "," + yScale(data[1][data[1].length - 1].value) + ")")
+            .attr("dy", ".15em")
+            .attr("text-anchor", "start")
+            .style("fill", color)
+            .text(countryCode);
+        }
+    }
+}
+
+function drawChartAnnotationWorld(countryCode, countrylabel, color){
+
+    return function(data){
+
+        xScale.domain(d3.extent(data[1], function(d) { return d.date; }));
+        yScale.domain([0, 100]);
+
+        innerChart
+            .append('g')
+            .attr('transform', "translate(0," + height + ")")
+            .call(xAxis);
+
+        innerChart
+            .append("text")             
+            .attr("transform",
+                "translate(" + (width/2) + " ," + 
+                                (height + margin.top + 20) + ")")
+            .style("text-anchor", "middle")
+            .text("year");
+        
+        innerChart
+            .append("text")
+            .attr("transform",
+                "translate(" + (width/2) + " ," + 
+                                ((height/2) - 28) + ")")
+            .text("SECOND TEXT");
+        
+        innerChart
+            .append("text")
+            .attr("transform",
+                "translate(" + (width/2) + " ," + 
+                                ((height/2) - 8) + ")")
+            .text("SECOND");
 
         console.log("add y axis");
         // Add the Y Axis
