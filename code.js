@@ -121,7 +121,15 @@ function debug(d){
  * @param {*} type type constant, 0: total, 1: male, 2: female
  */
 function draw(countryCode, countrylabel, type) {
-    console.log("country in draw():", countryCode);
+    if (type == 1){
+        loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "CornflowerBlue"));
+    }
+    else {
+        loadEmploymentByCountryCode(countryCode, "female", drawChart(countryCode, countrylabel, "pink"));
+    }
+}
+
+function drawAnnotation(countryCode, countrylabel, type) {
 
     if (type == 1){
         loadEmploymentByCountryCode(countryCode, "male", drawChart(countryCode, countrylabel, "CornflowerBlue"));
