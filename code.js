@@ -233,7 +233,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .append("text")             
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                (height + margin.top + 20) + ")")
+                                (height/2) + ")")
             .style("text-anchor", "middle")
             .text("year");
         
