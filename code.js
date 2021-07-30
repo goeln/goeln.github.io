@@ -44,6 +44,7 @@ var g = innerChart
 
 $("#nav_page2_id").click(function() {
     innerChart.selectAll("g").remove();
+    innerChart.selectAll("text").remove();
     hide('#page1_id');
     show('#page2_id');    
     drawAnnotation2("USA", false, 1);
@@ -350,8 +351,6 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
                                 ((height/2) - 8) + ")")
             .text("SECOND");
 
-        console.log("add y axis");
-        // Add the Y Axis
         innerChart
             .append('g')
             .call(yAxis)
