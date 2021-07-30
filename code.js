@@ -339,14 +339,14 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 128) + ")")
+                                ((height/2) - 145) + ")")
             .text("Note that the % difference from 2000 to 2018 is");
         
         innerChart
             .append("text")
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
-                                ((height/2) - 108) + ")")
+                                ((height/2) - 125) + ")")
             .text("only about 1-2% across both genders");
 
         innerChart
