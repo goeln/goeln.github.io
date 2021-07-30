@@ -249,6 +249,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 48) + ")")
+            .style('fill', 'purple')
             .text("There's 8% increase from 2000 to 2018");
         
         innerChart
@@ -256,6 +257,7 @@ function drawChartAnnotationWorld(countryCode, countrylabel, color){
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 28) + ")")
+            .style('fill', 'purple')
             .text("but only a ~1% difference between the genders");
         
         innerChart
@@ -340,6 +342,7 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 145) + ")")
+            .style('fill', 'purple')
             .text("The % difference in employment from 2000 to");
         
         innerChart
@@ -347,7 +350,7 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 125) + ")")
-            .style('fill', 'darkOrange')
+            .style('fill', 'purple')
             .text(" 2018 is only about 1-2% across both genders");
 
         innerChart
