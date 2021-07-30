@@ -347,6 +347,7 @@ function drawChartAnnotationUSA(countryCode, countrylabel, color){
             .attr("transform",
                 "translate(" + (width/2) + " ," + 
                                 ((height/2) - 125) + ")")
+            .style('fill', 'darkOrange')
             .text("only about 1-2% across both genders");
 
         innerChart
